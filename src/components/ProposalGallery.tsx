@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState, type KeyboardEvent, type TouchEvent } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { resolveImageUrl } from '../lib/images';
 import { Lightbox } from './Lightbox';
 
 interface Props {
@@ -21,11 +22,11 @@ export function ProposalGallery({ shirtImages, jacketImages, proposalName, eager
   const items = useMemo<GalleryItem[]>(
     () => [
       ...shirtImages.map((src, i) => ({
-        src,
+        src: resolveImageUrl(src),
         label: `Camiseta ${i + 1} de ${shirtImages.length}`,
       })),
       ...jacketImages.map((src, i) => ({
-        src,
+        src: resolveImageUrl(src),
         label: `Chaqueta ${i + 1} de ${jacketImages.length}`,
       })),
     ],

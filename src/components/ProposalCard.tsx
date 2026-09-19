@@ -1,4 +1,5 @@
 import type { Proposal } from '../types';
+import { resolveImageUrl } from '../lib/images';
 import { ProposalGallery } from './ProposalGallery';
 import { RatingInput } from './RatingInput';
 
@@ -40,16 +41,28 @@ export function ProposalCard({ proposal, index, rating, onRate, onVoteIntent, vo
           </h4>
           {proposal.description && <p className="prose-body mt-2">{proposal.description}</p>}
           {proposal.extra_info.length > 0 && (
-            <dl className="mt-3 space-y-2">
-              {proposal.extra_info.map((item) => (
-                <div key={item.label} className="flex gap-2 text-sm">
-                  <dt className="shrink-0 font-mono text-xs uppercase tracking-widest text-muted">
-                    {item.label}:
-                  </dt>
-                  <dd className="text-secondary">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="mt-3 space-y-3">
+              {proposal.extra_info.map((item) => {
+                const isImage = /\.(jpe?g|png|gif|webp|svg)$/i.test(item.value);
+                return (
+                  <div key={item.label}>
+                    <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                      {item.label}
+                    </p>
+                    {isImage ? (
+                      <img
+                        src={resolveImageUrl(item.value)}
+                        alt={`${proposal.promotion_name}: ${item.label}`}
+                        loading="lazy"
+                        className="mt-1 aspect-[4/3] w-full rounded-md border border-edge object-cover"
+                      />
+                    ) : (
+                      <p className="mt-0.5 text-sm text-secondary">{item.value}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           )}
         </div>
       )}
