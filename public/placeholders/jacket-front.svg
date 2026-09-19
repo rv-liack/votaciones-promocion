@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Silueta de chaqueta, vista frontal">
+  <rect width="400" height="500" fill="#1a1a1a"/>
+  <g fill="none" stroke="#8a8a97" stroke-width="10" stroke-linejoin="round">
+    <path d="M150 80 L100 100 L60 200 L70 330 L115 325 L125 220 L125 430 L275 430 L275 220 L285 325 L330 330 L340 200 L300 100 L250 80 L225 140 L200 160 L175 140 Z"/>
+    <line x1="200" y1="160" x2="200" y2="430"/>
+  </g>
+  <text x="200" y="465" text-anchor="middle" font-family="monospace" font-size="24" fill="#6e6e78">FRENTE</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Silueta de chaqueta, vista espalda">
+  <rect width="400" height="500" fill="#1a1a1a"/>
+  <g fill="none" stroke="#8a8a97" stroke-width="10" stroke-linejoin="round">
+    <path d="M150 80 L100 100 L60 200 L70 330 L115 325 L125 220 L125 430 L275 430 L275 220 L285 325 L330 330 L340 200 L300 100 L250 80 C235 90 218 95 200 95 C182 95 165 90 150 80 Z"/>
+    <line x1="150" y1="230" x2="250" y2="230"/>
+  </g>
+  <text x="200" y="465" text-anchor="middle" font-family="monospace" font-size="24" fill="#6e6e78">ESPALDA</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Silueta de camiseta, vista espalda">
+  <rect width="400" height="500" fill="#1a1a1a"/>
+  <g fill="none" stroke="#8a8a97" stroke-width="10" stroke-linejoin="round">
+    <path d="M140 90 L90 120 L60 190 L110 205 L125 175 L125 420 L275 420 L275 175 L290 205 L340 190 L310 120 L260 90 C245 100 222 105 200 105 C178 105 155 100 140 90 Z"/>
+    <line x1="150" y1="250" x2="250" y2="250"/>
+    <line x1="150" y1="280" x2="250" y2="280"/>
+  </g>
+  <text x="200" y="465" text-anchor="middle" font-family="monospace" font-size="24" fill="#6e6e78">ESPALDA</text>
+</svg>
