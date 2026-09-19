@@ -1,31 +1,31 @@
 # Codigos de Votacion - Logistica
 
-Total: **25 codigos** (batch )
+Total: **25 codigos** (batch `logistica`)
 
 | # | Codigo |
 |---|--------|
-| 176 | `VT5-BPPM` |
-| 177 | `VZAV-ADPF` |
-| 178 | `W5P-R2JU` |
-| 179 | `W8K2-ZXA` |
-| 180 | `WAJB-8PC3` |
-| 181 | `WCXQ-KG4P` |
-| 182 | `WGKT-JMBW` |
-| 183 | `WNAJ-3WEP` |
-| 184 | `WVG-YKHZ` |
-| 185 | `X4CV-AZWY` |
-| 186 | `X7G4-79GT` |
-| 187 | `XD4T-29VP` |
-| 188 | `XM7Q-6A3B` |
-| 189 | `XWWF-ZNN7` |
-| 190 | `Y259-WH6` |
-| 191 | `YEUV-NAJH` |
-| 192 | `YFVX-JEM` |
-| 193 | `YKX-FWRC` |
-| 194 | `YUZG-AEKH` |
-| 195 | `YVSD-BYGS` |
-| 196 | `ZAG3-V9QR` |
-| 197 | `ZETN-4N9` |
-| 198 | `ZTQZ-ZYTN` |
-| 199 | `ZTXG-DT9P` |
-| 200 | `ZXGC-8QVA` |
+| 1 | `WEXW-KQEY` |
+| 2 | `WF64-GETN` |
+| 3 | `WGGX-83DM` |
+| 4 | `WHZV-TN8W` |
+| 5 | `WXVF-SHRE` |
+| 6 | `WZQX-CX6J` |
+| 7 | `X29S-PMBJ` |
+| 8 | `X3TH-BGPD` |
+| 9 | `XD4E-TND8` |
+| 10 | `XD59-2E4T` |
+| 11 | `XD9N-E89N` |
+| 12 | `XHWE-QUD6` |
+| 13 | `XT9M-WYBH` |
+| 14 | `XTND-72T3` |
+| 15 | `XU9C-XW7A` |
+| 16 | `XUEW-QS9Q` |
+| 17 | `XVGC-596U` |
+| 18 | `XVUF-9248` |
+| 19 | `XY8C-3NJ8` |
+| 20 | `XZ3N-PFYV` |
+| 21 | `XZEV-QF59` |
+| 22 | `Z93P-Z72V` |
+| 23 | `ZFV8-K4WH` |
+| 24 | `ZT77-UPZZ` |
+| 25 | `ZVRD-38QH` |
