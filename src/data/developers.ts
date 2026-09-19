@@ -23,13 +23,14 @@ export interface Developer {
 
 export const developers: Developer[] = [
   {
-    name: 'Ana Quispe',
-    role: 'Desarrolladora Frontend',
+    name: 'Rafaelito Vicioso FLeurimond',
+    role: 'Director General de Desarrllo',
     photo: '/developers/dev-1.svg',
     socials: [
-      { type: 'github', url: 'https://github.com/' },
+      { type: 'github', url: 'https://github.com/rv-liack' },
       { type: 'linkedin', url: 'https://linkedin.com/' },
-      { type: 'email', url: 'mailto:ana@example.com' },
+      { type: 'email', url: 'rafaelito.vicioso@gmail.com' },
+      { type: "x", url: "https://x.com/liack_"}
     ],
   },
   {
