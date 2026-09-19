@@ -52,18 +52,22 @@ where not exists (select 1 from public.proposals where position = 4);
 -- ajusta generate_series(1, N) a la cantidad deseada.
 --
 -- insert into public.voter_codes (code, batch)
--- select string_agg(substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ',
---            1 + (get_byte(gen_random_bytes(1), 0) % 32), 1), '')
---        || '-' ||
---        string_agg(substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ',
---            1 + (get_byte(gen_random_bytes(1), 0) % 32), 1), '')
---   from generate_series(1, 4) a, generate_series(1, 10) b
---  group by b;
---
--- Para que el batch sea 'test' en el lote de prueba, envuelve el
--- insert anterior: with nuevo as (...) insert into voter_codes...
--- (versión simple: genera con batch por defecto y luego
---  update voter_codes set batch = 'test' where ...).
+-- select code, 'main' from (
+--   select
+--     substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     || '-'
+--     || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+--     as code
+--   from generate_series(1, 10)
+-- ) sub
+-- where length(code) = 9
+-- on conflict (code) do nothing;
 --
 -- Borrar el lote de prueba (solo códigos sin usar):
 -- delete from public.voter_codes where batch = 'test' and used = false;

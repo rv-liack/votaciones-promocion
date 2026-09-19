@@ -2,11 +2,6 @@
 -- Las 3 funciones son SECURITY DEFINER con SET search_path = public,
 -- con REVOKE de PUBLIC y GRANT EXECUTE solo a anon y authenticated.
 
--- Constantes de limitación de intentos (fáciles de cambiar):
--- RATE_MAX_FAILED = 30 intentos fallidos, RATE_WINDOW_MIN = 10 minutos.
--- Los registros de más de 1 día se borran de vez en cuando.
-
--- validate_code(p_code) -> 'valid' | 'invalid' | 'used' | 'rate_limited'.
 create or replace function public.validate_code(p_code text)
 returns text
 language plpgsql
@@ -23,7 +18,6 @@ declare
   RATE_MAX_FAILED int := 30;
   RATE_WINDOW_MIN int := 10;
 begin
-  -- client_key = hash del primer IP de x-forwarded-for.
   begin
     v_ip := split_part(coalesce((v_headers::json ->> 'x-forwarded-for'), ''), ',', 1);
   exception when others then
@@ -35,7 +29,6 @@ begin
   end if;
   v_client_key := 'ip:' || md5(v_ip);
 
-  -- Si el client_key acumula 30 fallos en 10 min: rate_limited SIN consultar el código.
   select count(*) into v_fails
     from access_attempts
    where client_key = v_client_key
@@ -70,8 +63,6 @@ $$;
 revoke all on function public.validate_code(text) from public;
 grant execute on function public.validate_code(text) to anon, authenticated;
 
--- get_proposals(p_code) -> jsonb ordenado por position.
--- Solo se entrega si el código existe y no está usado; si no, excepción.
 create or replace function public.get_proposals(p_code text)
 returns jsonb
 language plpgsql
@@ -106,12 +97,6 @@ $$;
 revoke all on function public.get_proposals(text) from public;
 grant execute on function public.get_proposals(text) to anon, authenticated;
 
--- cast_vote(p_code, p_proposal_id, p_ratings) -> 'ok'.
--- p_ratings es un objeto {proposal_id: score}. Todo en UNA transacción:
--- bloquea la fila del código (SELECT ... FOR UPDATE), valida, genera
--- ballot_id, inserta voto + calificaciones y marca el código como usado.
--- Errores claros: invalid_code, already_used, invalid_proposal,
--- invalid_rating, rate_limited. Ni dos envíos simultáneos repiten el voto.
 create or replace function public.cast_vote(p_code text, p_proposal_id uuid, p_ratings jsonb)
 returns text
 language plpgsql
@@ -207,9 +192,6 @@ $$;
 revoke all on function public.cast_vote(text, uuid, jsonb) from public;
 grant execute on function public.cast_vote(text, uuid, jsonb) to anon, authenticated;
 
--- Vista administrativa: propuesta, votos a favor, cantidad de
--- calificaciones y promedio. Solo se consulta desde el panel de
--- base de datos: sin acceso para anon ni authenticated.
 create or replace view public.proposal_results as
 select
   p.id as proposal_id,

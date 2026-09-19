@@ -50,13 +50,22 @@ Ejecuta en el panel SQL (alfabeto sin ambiguos `23456789ABCDEFGHJKMNPQRSTUVWXYZ`
 ```sql
 -- Genera 200 códigos del lote 'main' (ajusta generate_series a la cantidad deseada)
 insert into public.voter_codes (code, batch)
-select string_agg(substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ',
-           1 + (get_byte(gen_random_bytes(1), 0) % 32), 1), '')
-       || '-' ||
-       string_agg(substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ',
-           1 + (get_byte(gen_random_bytes(1), 0) % 32), 1), '')
-  from generate_series(1, 4) a, generate_series(1, 200) b
- group by b;
+select code, 'main' from (
+  select
+    substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    || '-'
+    || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    || substr('23456789ABCDEFGHJKMNPQRSTUVWXYZ', 1 + floor(random() * 32)::int, 1)
+    as code
+  from generate_series(1, 200)
+) sub
+where length(code) = 9
+on conflict (code) do nothing;
 
 -- Ver los códigos generados (cópialos para repartirlos)
 select code from public.voter_codes where batch = 'main' and used = false order by code;
