@@ -9,7 +9,9 @@ export const isSupabaseConfigured = Boolean(url && anonKey);
 
 let client: SupabaseClient | null = null;
 if (url && anonKey) {
-  client = createClient(url, anonKey);
+  client = createClient(url, anonKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
 }
 
 export function getSupabase(): SupabaseClient {

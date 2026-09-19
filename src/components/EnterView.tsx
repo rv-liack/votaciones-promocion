@@ -70,8 +70,10 @@ export function EnterView({ onValidated }: Props) {
               id="code"
               name="code"
               type="text"
+              inputMode="text"
               autoComplete="off"
               autoCapitalize="characters"
+              autoCorrect="off"
               spellCheck={false}
               placeholder="XXXX-XXXX"
               value={value}

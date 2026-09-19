@@ -3,9 +3,9 @@
 
 const CODE_RE = /^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{4}-[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{4}$/;
 
-/** Mayúsculas + recorte. No valida el formato. */
+/** Mayúsculas + recorte + elimina espacios e caracteres invisibles. No valida el formato. */
 export function normalizeCode(raw: string): string {
-  return raw.trim().toUpperCase();
+  return raw.trim().toUpperCase().replace(/\s/g, '');
 }
 
 /** Formatea el input: filtra al alfabeto y agrupa como XXXX-XXXX. */
