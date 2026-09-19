@@ -25,7 +25,7 @@ export const developers: Developer[] = [
   {
     name: 'Rafaelito Vicioso FLeurimond',
     role: 'Director General de Desarrllo',
-    photo: '/developers/dev-1.svg',
+    photo: '/developers/rafael.jpg',
     socials: [
       { type: 'github', url: 'https://github.com/rv-liack' },
       { type: 'linkedin', url: 'https://linkedin.com/' },
