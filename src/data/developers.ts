@@ -33,24 +33,4 @@ export const developers: Developer[] = [
       { type: "x", url: "https://x.com/liack_"}
     ],
   },
-  {
-    name: 'Luis Mamani',
-    role: 'Desarrollador Backend',
-    photo: '/developers/dev-2.svg',
-    socials: [
-      { type: 'github', url: 'https://github.com/' },
-      { type: 'x', url: 'https://x.com/' },
-      { type: 'web', url: 'https://example.com/' },
-    ],
-  },
-  {
-    name: 'María Flores',
-    role: 'Diseñadora UI',
-    photo: '/developers/dev-3.svg',
-    socials: [
-      { type: 'instagram', url: 'https://instagram.com/' },
-      { type: 'linkedin', url: 'https://linkedin.com/' },
-      { type: 'email', url: 'mailto:maria@example.com' },
-    ],
-  },
 ];
