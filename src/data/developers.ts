@@ -23,7 +23,7 @@ export interface Developer {
 
 export const developers: Developer[] = [
   {
-    name: 'Rafaelito Vicioso FLeurimond',
+    name: 'Rafaelito Vicioso Fleurimond',
     role: 'Director General de Desarrllo',
     photo: '/developers/rafael.jpg',
     socials: [
