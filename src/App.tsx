@@ -4,6 +4,7 @@ import { EnterView } from './components/EnterView';
 import { VoteView } from './components/VoteView';
 import { DoneView } from './components/DoneView';
 import { Results } from './components/Results';
+import { SocialLinks } from './components/SocialLinks';
 import { Footer } from './components/Footer';
 import { useTheme } from './hooks/useTheme';
 import { session } from './lib/session';
@@ -56,6 +57,7 @@ export function App() {
         {view === 'done' && summary && <DoneView summary={summary} />}
       </main>
       <Results />
+      <SocialLinks />
       <Footer />
     </div>
   );
