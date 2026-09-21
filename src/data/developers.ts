@@ -33,12 +33,9 @@ export const developers: Developer[] = [
       { type: "x", url: "https://x.com/liack_"}
     ],
   },
-];
-
-export const developers: Developer[] = [
-  {
+   {
     name: 'Christopher Lorenzo Encarnación',
-    role: 'K.L.K.',
+    role: 'Colaborador del Proyecto',
     photo: '',
     socials: [
       { type: 'github', url: '' },
@@ -48,3 +45,5 @@ export const developers: Developer[] = [
     ],
   },
 ];
+
+
