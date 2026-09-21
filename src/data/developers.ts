@@ -35,7 +35,7 @@ export const developers: Developer[] = [
   },
    {
     name: 'Christopher Lorenzo Encarnación',
-    role: 'Colaborador del Proyecto',
+    role: 'Prime enginer',
     photo: '',
     socials: [
       { type: 'github', url: '' },
