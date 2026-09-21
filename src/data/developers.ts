@@ -34,3 +34,17 @@ export const developers: Developer[] = [
     ],
   },
 ];
+
+export const developers: Developer[] = [
+  {
+    name: 'Christopher Lorenzo Encarnación',
+    role: 'K.L.K.',
+    photo: '',
+    socials: [
+      { type: 'github', url: '' },
+      { type: 'linkedin', url: '' },
+      { type: 'email', url: '' },
+      { type: "x", url: ""}
+    ],
+  },
+];
