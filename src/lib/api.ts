@@ -1,6 +1,12 @@
 import { getSupabase, isSupabaseConfigured } from './supabase';
 import { fallbackProposals } from '../data/fallback';
-import type { DraftRatings, Proposal, ValidateStatus, VoteServerError } from '../types';
+import type {
+  DraftRatings,
+  Proposal,
+  ResultsData,
+  ValidateStatus,
+  VoteServerError,
+} from '../types';
 
 // Toda la comunicación con la base de datos pasa por funciones SQL
 // llamadas por RPC. El navegador NUNCA lee ni escribe tablas directamente.
@@ -72,4 +78,21 @@ export async function castVote(
   if (error) throw new Error(toVoteError(error.message));
   if (data !== 'ok') throw new Error('connect');
   return 'ok';
+}
+
+// ─── Resultados ───
+
+export async function validateResultsCode(code: string): Promise<boolean> {
+  const sb = getSupabase();
+  const { data, error } = await sb.rpc('validate_results_code', { p_code: code });
+  if (error) throw new Error('connect');
+  return data === 'valid';
+}
+
+export async function getResultsData(): Promise<ResultsData> {
+  if (!isSupabaseConfigured) throw new Error('connect');
+  const sb = getSupabase();
+  const { data, error } = await sb.rpc('get_results_data');
+  if (error) throw new Error('connect');
+  return data as ResultsData;
 }

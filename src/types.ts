@@ -42,3 +42,43 @@ export type VoteServerError =
   | 'invalid_rating'
   | 'rate_limited'
   | 'connect';
+
+// ─── Resultados ───
+
+export interface ProposalResult {
+  id: string;
+  position: number;
+  promotion_name: string;
+  favor_votes: number;
+  ratings_count: number;
+  avg_score: number | null;
+  max_score: number;
+  min_score: number;
+}
+
+export interface RatingDistributionItem {
+  proposal_id: string;
+  promotion_name: string;
+  score: number;
+  count: number;
+}
+
+export interface BatchStat {
+  batch: string;
+  total: number;
+  used: number;
+}
+
+export interface CodeStats {
+  total: number;
+  used: number;
+  unused: number;
+  by_batch: BatchStat[];
+}
+
+export interface ResultsData {
+  proposals: ProposalResult[];
+  total_votes: number;
+  rating_distribution: RatingDistributionItem[];
+  code_stats: CodeStats;
+}
